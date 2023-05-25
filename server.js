@@ -14,15 +14,7 @@ app.get("/:duration/:username?/:phone?", (req, res) => {
   const timerId = setTimeout(() => {
     // 在這裡執行你想要執行的動作
 
-    // 例如印出使用者名稱
-    if (username != "null") {
-
-
-      mailController.sendMail(username);
-    }
-
     if (phone != "null") {
-
       smsController.sendSMS(phone);
     }
 
