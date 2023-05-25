@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-app.get("/:duration/:username/:phone?", (req, res) => {
+app.get("/:duration/:username?/:phone?", (req, res) => {
   const { duration, username, phone } = req.params;
 
   setTimeout(() => {
