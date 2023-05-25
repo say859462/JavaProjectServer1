@@ -1,18 +1,14 @@
 {
-  "name": "JavaProjectServer",
+  "name": "javaprojectserver",
   "version": "1.0.0",
-  "description": "Server detect timetask",
+  "description": "",
   "main": "index.js",
   "scripts": {
-      "deploy": "cyclic deploy"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mosmochi",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "engines": {
-  "java": "1.8"
-}
-
+    "express": "^4.18.2"
+  }
 }
