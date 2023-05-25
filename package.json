@@ -4,11 +4,15 @@
   "description": "Server detect timetask",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+      "deploy": "cyclic deploy"
   },
   "author": "Mosmochi",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "engines": {
+  "java": "1.8"
+}
+
 }
