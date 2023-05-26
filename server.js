@@ -10,7 +10,7 @@ const smsController = new SMSController();
 app.get("/:duration", (req, res) => {
   const { duration } = req.params;
   const { username, phone } = req.query;
-  const timerId = setTimeout(async () => {
+  setTimeout(async () => {
     // 在這裡執行你想要執行的動作
 
     // 例如印出使用者名稱
