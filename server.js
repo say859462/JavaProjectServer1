@@ -10,20 +10,20 @@ const smsController = new SMSController();
 app.get("/:duration", (req, res) => {
   const { duration } = req.params;
   const { username, phone } = req.query;
-  setTimeout(() => {
-    // 在這裡執行你想要執行的動作
-    // 例如印出使用者名稱
-    if (username) {
-      mailController.sendMail(username);
-      console.log("寄送電子郵件");
-    }
+  // setTimeout(() => {
+  //   // 在這裡執行你想要執行的動作
+  //   // 例如印出使用者名稱
 
-    if (phone) {
-      smsController.sendSMS(phone);
-      console.log("寄送手機簡訊");
-    }
-  }, duration * 1000); // 將秒數轉換為毫秒
+  // }, duration * 1000); // 將秒數轉換為毫秒
+  if (username) {
+    mailController.sendMail(username);
+    console.log("寄送電子郵件");
+  }
 
+  if (phone) {
+    smsController.sendSMS(phone);
+    console.log("寄送手機簡訊");
+  }
   res.send("Timer started");
 });
 
