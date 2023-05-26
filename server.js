@@ -98,7 +98,7 @@ app.post("/schedule", (req, res) => {
   const { duration, username, phone } = req.query;
 
   // 將定時時間轉換為毫秒數
-  const durationMs = duration * 1000;
+  const durationMs = Number(duration * 1000);
 
   // 執行指定動作
   setTimeout(async () => {
