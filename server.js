@@ -7,25 +7,23 @@ const mailController = new MailController();
 const SMSController = require("./SMSController");
 const smsController = new SMSController();
 
-app.get("/:duration/:username?/:phone?", (req, res) => {
-  const { duration, username, phone } = req.params;
-
-  const timerId = setTimeout(() => {
+app.get("/:duration", (req, res) => {
+  const { duration } = req.params;
+  const { username, phone } = req.query;
+  const timerId = setTimeout(async () => {
     // 在這裡執行你想要執行的動作
 
     // 例如印出使用者名稱
-    if (username != "null") {
-      mailController.sendMail(username);
+    if (username) {
+      await mailController.sendMail(username);
+      console.log("寄送電子郵件");
     }
 
-    if (phone != "null") {
-      smsController.sendSMS(phone);
+    if (phone) {
+      await smsController.sendSMS(phone);
+      console.log("寄送手機簡訊");
     }
-
-    delete timers[timerId];
   }, duration * 1000); // 將秒數轉換為毫秒
-
-
 
   res.send("Timer started");
 });
