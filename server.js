@@ -16,7 +16,7 @@ class SMSController {
     try {
       const message =
         phoneNumber + `使用者您好，您的定時提醒已到時間，請記得更換您的密碼`;
-
+      console.log(this.HostPassword, this.HostUsername);
       const postData = querystring.stringify({
         username: this.HostUsername,
         password: this.HostPassword,
@@ -83,7 +83,7 @@ class MailController {
       };
 
       transporter.sendMail(mailOptions);
-
+      console.log(this.senderEmail, apiKey);
       console.log("電子郵件寄送成功!");
     } catch (error) {
       console.error("寄送電子郵件發生錯誤:", error);
