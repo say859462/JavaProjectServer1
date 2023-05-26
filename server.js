@@ -16,7 +16,6 @@ class SMSController {
     try {
       const message =
         phoneNumber + `使用者您好，您的定時提醒已到時間，請記得更換您的密碼`;
-      console.log(this.HostPassword, this.HostUsername);
       const postData = querystring.stringify({
         username: this.HostUsername,
         password: this.HostPassword,
@@ -102,12 +101,12 @@ app.post("/schedule", (req, res) => {
   const durationMs = duration * 1000;
 
   // 執行指定動作
-  setTimeout(() => {
+  setTimeout(async () => {
     console.log("時間到了！執行動作：", { username, phone });
 
     // 在這裡執行你想要的動作，例如發送簡訊、觸發其他服務等等
-    if (phone) smsController.sendSMS(phone);
-    if (username) mailController.sendMail(username);
+    if (phone) await smsController.sendSMS(phone);
+    if (username) await mailController.sendMail(username);
     res.status(200).json({ message: "動作已執行" });
   }, durationMs);
 });
