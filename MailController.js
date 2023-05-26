@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 class MailController {
   constructor() {
     this.senderEmail = "sw710407@gmail.com";
-    this.apiKey = "dfmiylxxxzixdkds"; // 電子郵件API金鑰
+    this.apiKey = "dfmiylxxxzixdkds"; // 電子郵件 API 金鑰
   }
 
   sendMail(userMail) {
@@ -25,9 +25,9 @@ class MailController {
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log("電子郵件寄送失敗:", error);
+        console.error("電子郵件驗證碼寄送失敗:", error);
       } else {
-        console.log("電子郵件寄送成功!");
+        console.log("電子郵件驗證碼寄送成功!");
       }
     });
   }
