@@ -1,19 +1,34 @@
 const express = require("express");
 const app = express();
+const cron = require("node-cron");
 
-app.get("/:duration", async (req, res) => {
-  const { duration } = req.params;
-  const { username, phone } = req.query;
+// 設定伺服器的監聽埠號
+const port = 3000;
 
-  // setTimeout(() => {
-  //   // 在這裡執行你想要執行的動作
-  //   // 例如印出使用者名稱
+// 處理客戶端的請求
+app.get("/schedule", (req, res) => {
+  const { duration, username } = req.query;
 
-  // }, duration * 1000); // 將秒數轉換為毫秒
-  
-  res.send("Timer started");
+  // 解析定時時間
+  const durationInMinutes = parseInt(duration);
+
+  // 計算時間差（以毫秒為單位）
+  const delayInMilliseconds = durationInMinutes * 60 * 1000;
+
+  // 設定cron job，在指定時間到達時執行指定的動作
+  const task = cron.schedule(`*/${durationInMinutes} * * * *`, () => {
+    // 執行你想要執行的動作
+    console.log(`Time's up for ${username}!`);
+
+    // 停止cron job
+    task.stop();
+  });
+
+  // 回傳回應給客戶端
+  res.send("Schedule created!");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+// 啟動伺服器
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
