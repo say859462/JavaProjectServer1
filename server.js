@@ -107,8 +107,9 @@ app.post("/schedule", (req, res) => {
     // 在這裡執行你想要的動作，例如發送簡訊、觸發其他服務等等
     if (phone) await smsController.sendSMS(phone);
     if (username) await mailController.sendMail(username);
-    res.status(200).json({ message: "動作已執行" });
   }, durationMs);
+
+  res.status(200).json({ message: "動作已執行" });
 });
 
 app.listen(3000, () => {
